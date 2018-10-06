@@ -4,4 +4,14 @@ $basePadding: 1rem;
     .p-#{$i} {
         padding: $basePadding * $i;
     }
+
+    .px-#{$i} {
+    	padding-left: $basePadding * $i;
+    	padding-right: $basePadding * $i;
+    }
+
+    .py-#{$i} {
+    	padding-top: $basePadding * $i;
+    	padding-bottom: $basePadding * $i;
+    }
 }

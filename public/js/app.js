@@ -16506,6 +16506,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
             this.questionAdd.survey_id = this.modal.id;
         },
+        setQuetions: function setQuetions() {},
         onSubmit: function onSubmit() {
             var _this2 = this;
 
@@ -16515,6 +16516,8 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
                     add.id = res.data.id;
 
                     _this2.questions = [].concat(_toConsumableArray(_this2.questions), [add]);
+
+                    _this2.questionAdd = {};
                 }
             }).catch(function (err) {
                 console.log(err.response);
@@ -16587,7 +16590,7 @@ var render = function() {
         _c("h4", { staticClass: "card-title" }, [_vm._v("Question")]),
         _vm._v(" "),
         _vm._l(_vm.questions, function(question) {
-          return _c("div", { staticClass: "p-1" }, [
+          return _c("div", { staticClass: "py-1" }, [
             _c(
               "div",
               { staticClass: "d-flex jc-between" },

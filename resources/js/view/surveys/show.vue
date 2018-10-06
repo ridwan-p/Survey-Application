@@ -16,7 +16,7 @@
         <div class="card-body">
             <h4 class="card-title">Question</h4>
             <!-- <div class="card" > -->
-            	<div v-for="question in questions" class="p-1">
+            	<div v-for="question in questions" class="py-1">
             		<div class="d-flex jc-between">
 	            		<strong>{{question.title}}</strong>
 	            		<router-link :to="`/questions/${question.id}`">Edit</router-link>
@@ -109,14 +109,20 @@ export default {
             this.questionAdd.survey_id = this.modal.id
         },
 
+        setQuetions() {
+
+        },
+
         onSubmit() {
             service.post(`questions`, this.questionAdd)
             	.then(res => {
             		if(res.data && res.data.event){
-            			let add = this.questionAdd
+            			const add = this.questionAdd
             			add.id = res.data.id
 
             			this.questions = [ ...this.questions, add ]
+
+                        this.questionAdd = {}
             		}
             	})
             	.catch(err => {
