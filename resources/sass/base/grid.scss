@@ -1,0 +1,11 @@
+.d-grid {
+	display:grid;
+}
+
+$gridGap: 1rem;
+
+@for $i from 1 through 5 {
+    .grid-gap-#{$i} {
+        grid-gap: $gridGap * $i;
+    }
+}

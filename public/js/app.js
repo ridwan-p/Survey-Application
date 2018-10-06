@@ -511,22 +511,6 @@ module.exports = g;
 
 /***/ }),
 /* 3 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
-
-
-var service = __WEBPACK_IMPORTED_MODULE_0_axios___default.a.create({
-	baseURL: "/api",
-	timeout: 5000
-});
-
-/* harmony default export */ __webpack_exports__["a"] = (service);
-
-/***/ }),
-/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -627,10 +611,10 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 
 module.exports = defaults;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ }),
-/* 5 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11596,7 +11580,7 @@ module.exports = Vue;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(15).setImmediate))
 
 /***/ }),
-/* 6 */
+/* 5 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -11784,6 +11768,22 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
+
+/***/ }),
+/* 6 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+
+
+var service = __WEBPACK_IMPORTED_MODULE_0_axios___default.a.create({
+	baseURL: "/api",
+	timeout: 5000
+});
+
+/* harmony default export */ __webpack_exports__["a"] = (service);
 
 /***/ }),
 /* 7 */
@@ -12114,7 +12114,7 @@ module.exports = __webpack_require__(48);
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__App__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__App___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__App__);
@@ -12392,7 +12392,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(6)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(5)))
 
 /***/ }),
 /* 17 */
@@ -12466,7 +12466,7 @@ if (false) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(20);
 
@@ -15164,7 +15164,7 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_request__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_request__ = __webpack_require__(6);
 //
 //
 //
@@ -15229,7 +15229,7 @@ module.exports = __webpack_require__(24);
 var utils = __webpack_require__(0);
 var bind = __webpack_require__(7);
 var Axios = __webpack_require__(26);
-var defaults = __webpack_require__(4);
+var defaults = __webpack_require__(3);
 
 /**
  * Create an instance of Axios
@@ -15312,7 +15312,7 @@ function isSlowBuffer (obj) {
 "use strict";
 
 
-var defaults = __webpack_require__(4);
+var defaults = __webpack_require__(3);
 var utils = __webpack_require__(0);
 var InterceptorManager = __webpack_require__(35);
 var dispatchRequest = __webpack_require__(36);
@@ -15851,7 +15851,7 @@ module.exports = InterceptorManager;
 var utils = __webpack_require__(0);
 var transformData = __webpack_require__(37);
 var isCancel = __webpack_require__(10);
-var defaults = __webpack_require__(4);
+var defaults = __webpack_require__(3);
 var isAbsoluteURL = __webpack_require__(38);
 var combineURLs = __webpack_require__(39);
 
@@ -16157,7 +16157,7 @@ if (false) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_request__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_request__ = __webpack_require__(6);
 //
 //
 //
@@ -16391,7 +16391,7 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_request__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_request__ = __webpack_require__(6);
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 //
@@ -16503,12 +16503,11 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
         setData: function setData(res) {
             this.modal = Object.assign({}, res.data.data);
             this.questions = Object.assign([], this.modal.questions);
-
-            this.questionAdd.survey_id = this.modal.id;
         },
-        setQuetions: function setQuetions() {},
         onSubmit: function onSubmit() {
             var _this2 = this;
+
+            this.questionAdd.survey_id = this.modal.id;
 
             __WEBPACK_IMPORTED_MODULE_0__utils_request__["a" /* default */].post("questions", this.questionAdd).then(function (res) {
                 if (res.data && res.data.event) {
@@ -16517,7 +16516,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
                     _this2.questions = [].concat(_toConsumableArray(_this2.questions), [add]);
 
-                    _this2.questionAdd = {};
+                    _this2.refresh();
                 }
             }).catch(function (err) {
                 console.log(err.response);
@@ -16528,8 +16527,16 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
                     _this2.errors = data.errors;
                 }
             });
-            // const add = this.questionAdd
-            // this.questions.push(add)
+        },
+        refresh: function refresh() {
+            var form = {
+                title: "",
+                type: "",
+                survey_id: "",
+                options: []
+            };
+
+            this.questionAdd = form;
         },
         onAdd: function onAdd() {
             this.options = [].concat(_toConsumableArray(this.options), [""]);
@@ -16538,11 +16545,6 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
             if (this.options.length > 1) {
                 this.options.pop();
                 this.questionAdd.options.pop();
-            }
-        },
-        onChooseOption: function onChooseOption() {
-            if (this.questionAdd.type === "textarea" || this.questionAdd.type === "text") {
-                this.questionAdd.options = null;
             }
         }
     }
@@ -16641,7 +16643,7 @@ var render = function() {
         _vm._v(" "),
         _c("h4", { staticClass: "card-title" }, [_vm._v("Add Question")]),
         _vm._v(" "),
-        _c("div", { staticClass: "d-flex flex-column" }, [
+        _c("div", { staticClass: "d-grid grid-gap-1" }, [
           _c(
             "select",
             {
@@ -16655,30 +16657,29 @@ var render = function() {
               ],
               staticClass: "form-control",
               on: {
-                change: [
-                  function($event) {
-                    var $$selectedVal = Array.prototype.filter
-                      .call($event.target.options, function(o) {
-                        return o.selected
-                      })
-                      .map(function(o) {
-                        var val = "_value" in o ? o._value : o.value
-                        return val
-                      })
-                    _vm.$set(
-                      _vm.questionAdd,
-                      "type",
-                      $event.target.multiple ? $$selectedVal : $$selectedVal[0]
-                    )
-                  },
-                  _vm.onChooseOption
-                ]
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.$set(
+                    _vm.questionAdd,
+                    "type",
+                    $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                  )
+                }
               }
             },
             [
-              _c("option", { attrs: { value: "", disabled: "" } }, [
-                _vm._v("Choose your option")
-              ]),
+              _c(
+                "option",
+                { attrs: { value: "", disabled: "", selected: "" } },
+                [_vm._v("Choose your option")]
+              ),
               _vm._v(" "),
               _vm._l(_vm.questionType, function(type) {
                 return _c("option", [_vm._v(_vm._s(type))])

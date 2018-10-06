@@ -35,9 +35,9 @@
             	</div>
             <!-- </div> -->
             <h4 class="card-title">Add Question</h4>
-            <div class="d-flex flex-column">
-                <select v-model="questionAdd.type" class="form-control" @change="onChooseOption">
-                    <option value="" disabled>Choose your option</option>
+            <div class="d-grid grid-gap-1">
+                <select v-model="questionAdd.type" class="form-control" >
+                    <option value="" disabled selected>Choose your option</option>
                     <option v-for="type in questionType">{{type}}</option>
                 </select>
                 <div class="form-group">
@@ -106,14 +106,12 @@ export default {
             this.modal = Object.assign({}, res.data.data)
             this.questions = Object.assign([], this.modal.questions)
 
-            this.questionAdd.survey_id = this.modal.id
-        },
-
-        setQuetions() {
 
         },
 
         onSubmit() {
+            this.questionAdd.survey_id = this.modal.id
+
             service.post(`questions`, this.questionAdd)
             	.then(res => {
             		if(res.data && res.data.event){
@@ -122,7 +120,7 @@ export default {
 
             			this.questions = [ ...this.questions, add ]
 
-                        this.questionAdd = {}
+                        this.refresh()
             		}
             	})
             	.catch(err => {
@@ -134,8 +132,17 @@ export default {
             			this.errors = data.errors
             		}
             	})
-            // const add = this.questionAdd
-            // this.questions.push(add)
+        },
+
+        refresh(){
+            let form = {
+                title : "",
+                type : "",
+                survey_id : "",
+                options : [],
+            }
+
+            this.questionAdd = form;
         },
 
         onAdd() {
@@ -149,11 +156,11 @@ export default {
         	}
         },
 
-        onChooseOption() {
-        	if(this.questionAdd.type === "textarea" || this.questionAdd.type === "text"){
-        		this.questionAdd.options = null
-        	}
-        }
+        // onChooseOption() {
+        // 	if(this.questionAdd.type === "textarea" || this.questionAdd.type === "text"){
+        // 		this.questionAdd.options = [""]
+        // 	}
+        // }
 
     }
 }
