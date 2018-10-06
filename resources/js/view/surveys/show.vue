@@ -15,9 +15,25 @@
         </div>
         <div class="card-body">
             <h4 class="card-title">Question</h4>
-            <div class="d-flex flex-column">
+            <!-- <div class="card" > -->
+            	<div v-for="question in questions" class="p-1">
+            		<div class="d-flex jc-between">
+	            		<strong>{{question.title}}</strong>
+	            		<router-link :to="`/questions/${question.id}`">Edit</router-link>
+            		</div>
 
-            </div>
+            		<input type="text" class="form-control" v-if="question.type === 'text' ">
+
+            		<textarea class="form-control"cols="30" rows="10" v-if="question.type === 'textarea' "></textarea>
+
+					<div v-if="question.type === 'radio' || question.type === 'checkbox' " >
+						<div class="form-group" v-for="option in question.options">
+							<input  :type="question.type" :name="question.id">
+							<label for="">{{option}}</label>
+						</div>
+					</div>
+            	</div>
+            <!-- </div> -->
             <h4 class="card-title">Add Question</h4>
             <div class="d-flex flex-column">
                 <select v-model="questionAdd.type" class="form-control" @change="onChooseOption">
@@ -88,7 +104,7 @@ export default {
     methods: {
         setData(res) {
             this.modal = Object.assign({}, res.data.data)
-            this.questions = Object.assign({}, this.modal.questions)
+            this.questions = Object.assign([], this.modal.questions)
 
             this.questionAdd.survey_id = this.modal.id
         },
@@ -97,7 +113,9 @@ export default {
             service.post(`questions`, this.questionAdd)
             	.then(res => {
             		if(res.data && res.data.event){
-            			const add = this.questionAdd
+            			let add = this.questionAdd
+            			add.id = res.data.id
+
             			this.questions = [ ...this.questions, add ]
             		}
             	})
@@ -110,6 +128,8 @@ export default {
             			this.errors = data.errors
             		}
             	})
+            // const add = this.questionAdd
+            // this.questions.push(add)
         },
 
         onAdd() {
@@ -119,6 +139,7 @@ export default {
         onDeleteOption() {
         	if(this.options.length > 1){
         		this.options.pop()
+        		this.questionAdd.options.pop()
         	}
         },
 

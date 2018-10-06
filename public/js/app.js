@@ -16441,6 +16441,22 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -16486,7 +16502,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
     methods: {
         setData: function setData(res) {
             this.modal = Object.assign({}, res.data.data);
-            this.questions = Object.assign({}, this.modal.questions);
+            this.questions = Object.assign([], this.modal.questions);
 
             this.questionAdd.survey_id = this.modal.id;
         },
@@ -16496,6 +16512,8 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
             __WEBPACK_IMPORTED_MODULE_0__utils_request__["a" /* default */].post("questions", this.questionAdd).then(function (res) {
                 if (res.data && res.data.event) {
                     var add = _this2.questionAdd;
+                    add.id = res.data.id;
+
                     _this2.questions = [].concat(_toConsumableArray(_this2.questions), [add]);
                 }
             }).catch(function (err) {
@@ -16507,6 +16525,8 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
                     _this2.errors = data.errors;
                 }
             });
+            // const add = this.questionAdd
+            // this.questions.push(add)
         },
         onAdd: function onAdd() {
             this.options = [].concat(_toConsumableArray(this.options), [""]);
@@ -16514,6 +16534,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
         onDeleteOption: function onDeleteOption() {
             if (this.options.length > 1) {
                 this.options.pop();
+                this.questionAdd.options.pop();
             }
         },
         onChooseOption: function onChooseOption() {
@@ -16559,154 +16580,207 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "card-body" }, [
-      _c("h4", { staticClass: "card-title" }, [_vm._v("Question")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "d-flex flex-column" }),
-      _vm._v(" "),
-      _c("h4", { staticClass: "card-title" }, [_vm._v("Add Question")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "d-flex flex-column" }, [
-        _c(
-          "select",
-          {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.questionAdd.type,
-                expression: "questionAdd.type"
-              }
-            ],
-            staticClass: "form-control",
-            on: {
-              change: [
-                function($event) {
-                  var $$selectedVal = Array.prototype.filter
-                    .call($event.target.options, function(o) {
-                      return o.selected
-                    })
-                    .map(function(o) {
-                      var val = "_value" in o ? o._value : o.value
-                      return val
-                    })
-                  _vm.$set(
-                    _vm.questionAdd,
-                    "type",
-                    $event.target.multiple ? $$selectedVal : $$selectedVal[0]
-                  )
-                },
-                _vm.onChooseOption
-              ]
-            }
-          },
-          [
-            _c("option", { attrs: { value: "", disabled: "" } }, [
-              _vm._v("Choose your option")
-            ]),
-            _vm._v(" "),
-            _vm._l(_vm.questionType, function(type) {
-              return _c("option", [_vm._v(_vm._s(type))])
-            })
-          ],
-          2
-        ),
+    _c(
+      "div",
+      { staticClass: "card-body" },
+      [
+        _c("h4", { staticClass: "card-title" }, [_vm._v("Question")]),
         _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("label", { attrs: { for: "question" } }, [_vm._v("Question")]),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.questionAdd.title,
-                expression: "questionAdd.title"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: {
-              type: "text",
-              id: "question",
-              placeholder: "Please Enter Your Question"
-            },
-            domProps: { value: _vm.questionAdd.title },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(_vm.questionAdd, "title", $event.target.value)
-              }
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _vm.questionAdd.type == "radio" || _vm.questionAdd.type == "checkbox"
-          ? _c(
+        _vm._l(_vm.questions, function(question) {
+          return _c("div", { staticClass: "p-1" }, [
+            _c(
               "div",
-              { staticClass: "form-group" },
+              { staticClass: "d-flex jc-between" },
               [
-                _c("label", { attrs: { for: "" } }, [_vm._v("Options")]),
-                _vm._v(" "),
-                _vm._l(_vm.options, function(value, index) {
-                  return _c("div", { staticClass: "d-flex" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.questionAdd.options[index],
-                          expression: "questionAdd.options[index]"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: { type: "text" },
-                      domProps: { value: _vm.questionAdd.options[index] },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(
-                            _vm.questionAdd.options,
-                            index,
-                            $event.target.value
-                          )
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-link",
-                        on: { click: _vm.onDeleteOption }
-                      },
-                      [_vm._v("X")]
-                    )
-                  ])
-                }),
+                _c("strong", [_vm._v(_vm._s(question.title))]),
                 _vm._v(" "),
                 _c(
-                  "button",
-                  { staticClass: "btn btn-link", on: { click: _vm.onAdd } },
-                  [_vm._v("Add Other")]
+                  "router-link",
+                  { attrs: { to: "/questions/" + question.id } },
+                  [_vm._v("Edit")]
                 )
               ],
-              2
-            )
-          : _vm._e(),
+              1
+            ),
+            _vm._v(" "),
+            question.type === "text"
+              ? _c("input", {
+                  staticClass: "form-control",
+                  attrs: { type: "text" }
+                })
+              : _vm._e(),
+            _vm._v(" "),
+            question.type === "textarea"
+              ? _c("textarea", {
+                  staticClass: "form-control",
+                  attrs: { cols: "30", rows: "10" }
+                })
+              : _vm._e(),
+            _vm._v(" "),
+            question.type === "radio" || question.type === "checkbox"
+              ? _c(
+                  "div",
+                  _vm._l(question.options, function(option) {
+                    return _c("div", { staticClass: "form-group" }, [
+                      _c("input", {
+                        attrs: { type: question.type, name: question.id }
+                      }),
+                      _vm._v(" "),
+                      _c("label", { attrs: { for: "" } }, [
+                        _vm._v(_vm._s(option))
+                      ])
+                    ])
+                  })
+                )
+              : _vm._e()
+          ])
+        }),
         _vm._v(" "),
-        _c("div", [
+        _c("h4", { staticClass: "card-title" }, [_vm._v("Add Question")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "d-flex flex-column" }, [
           _c(
-            "button",
-            { staticClass: "btn btn-primary", on: { click: _vm.onSubmit } },
-            [_vm._v("Submit")]
-          )
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.questionAdd.type,
+                  expression: "questionAdd.type"
+                }
+              ],
+              staticClass: "form-control",
+              on: {
+                change: [
+                  function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.$set(
+                      _vm.questionAdd,
+                      "type",
+                      $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                    )
+                  },
+                  _vm.onChooseOption
+                ]
+              }
+            },
+            [
+              _c("option", { attrs: { value: "", disabled: "" } }, [
+                _vm._v("Choose your option")
+              ]),
+              _vm._v(" "),
+              _vm._l(_vm.questionType, function(type) {
+                return _c("option", [_vm._v(_vm._s(type))])
+              })
+            ],
+            2
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { attrs: { for: "question" } }, [_vm._v("Question")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.questionAdd.title,
+                  expression: "questionAdd.title"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: {
+                type: "text",
+                id: "question",
+                placeholder: "Please Enter Your Question"
+              },
+              domProps: { value: _vm.questionAdd.title },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.questionAdd, "title", $event.target.value)
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _vm.questionAdd.type == "radio" || _vm.questionAdd.type == "checkbox"
+            ? _c(
+                "div",
+                { staticClass: "form-group" },
+                [
+                  _c("label", { attrs: { for: "" } }, [_vm._v("Options")]),
+                  _vm._v(" "),
+                  _vm._l(_vm.options, function(value, index) {
+                    return _c("div", { staticClass: "d-flex" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.questionAdd.options[index],
+                            expression: "questionAdd.options[index]"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.questionAdd.options[index] },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.questionAdd.options,
+                              index,
+                              $event.target.value
+                            )
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-link",
+                          on: { click: _vm.onDeleteOption }
+                        },
+                        [_vm._v("X")]
+                      )
+                    ])
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    { staticClass: "btn btn-link", on: { click: _vm.onAdd } },
+                    [_vm._v("Add Other")]
+                  )
+                ],
+                2
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _c("div", [
+            _c(
+              "button",
+              { staticClass: "btn btn-primary", on: { click: _vm.onSubmit } },
+              [_vm._v("Submit")]
+            )
+          ])
         ])
-      ])
-    ])
+      ],
+      2
+    )
   ])
 }
 var staticRenderFns = [

@@ -1,0 +1,7 @@
+$basePadding: 1rem;
+
+@for $i from 1 through 5 {
+    .p-#{$i} {
+        padding: $basePadding * $i;
+    }
+}

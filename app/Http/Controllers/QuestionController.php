@@ -38,8 +38,6 @@ class QuestionController extends Controller
             "survey_id" => "required|exists:surveys,id",
         ]);
 
-        $request->options = implode(",", $request->options);
-
         $question = Question::create($request->all());
 
         return response()->json([
@@ -76,8 +74,6 @@ class QuestionController extends Controller
             "options" => "nullable",
             "survey_id" => "required|exists:surveys,id",
         ]);
-
-        $request->options = implode(",", $request->options);
 
         $question->update($request->all());
 
