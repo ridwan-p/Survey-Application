@@ -1,0 +1,35 @@
+.btn {
+	border: none;
+    border-radius: $border-radius;
+    display: inline-block;
+    height: 2.3rem;
+    line-height: 2.3rem;
+    outline: 0;
+    padding: 0 2rem;
+    text-transform: uppercase;
+    margin: 1rem 0;
+    font-size: 13px;
+    box-shadow: $box-shadow;
+    transition: .2s ease-out;
+    &-primary {
+        background: $color-primary;
+        color: #fff;
+    }
+
+    &-danger {
+        background: $color-danger;
+        color: #fff;
+    }
+    &-link {
+        color: $color-primary;
+        background: none;
+        box-shadow: none;
+    }
+    &-link:hover {
+        color: #333;
+    }
+
+    :hover {
+    	opacity:.8
+    }
+}
