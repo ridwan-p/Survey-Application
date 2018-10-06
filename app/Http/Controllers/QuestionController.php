@@ -33,10 +33,12 @@ class QuestionController extends Controller
     {
         $request->validate([
             "title" => "required|max:255",
-            "type" => "required|in:".Question::$type,
+            "type" => "required|in:".implode(',',Question::$type),
             "options" => "nullable|array",
             "survey_id" => "required|exists:surveys,id",
         ]);
+
+        $request->options = implode(",", $request->options);
 
         $question = Question::create($request->all());
 
@@ -70,10 +72,12 @@ class QuestionController extends Controller
     {
         $request->validate([
             "title" => "required|max:255",
-            "type" => "required|in:".Question::$type,
+            "type" => "required|in:".implode(',',Question::$type),
             "options" => "nullable",
             "survey_id" => "required|exists:surveys,id",
         ]);
+
+        $request->options = implode(",", $request->options);
 
         $question->update($request->all());
 

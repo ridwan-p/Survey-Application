@@ -60,7 +60,9 @@ export default {
                 survey_id : "",
                 options : [],
             },
-            options: [""]
+            options: [""],
+            errors: Object.create(null),
+            questions:[]
         }
     },
 
@@ -86,7 +88,7 @@ export default {
     methods: {
         setData(res) {
             this.modal = Object.assign({}, res.data.data)
-            this.questions = Object.assign({}, res.data.data.questions)
+            this.questions = Object.assign({}, this.modal.questions)
 
             this.questionAdd.survey_id = this.modal.id
         },
@@ -97,6 +99,15 @@ export default {
             		if(res.data && res.data.event){
             			const add = this.questionAdd
             			this.questions = [ ...this.questions, add ]
+            		}
+            	})
+            	.catch(err => {
+            		console.log(err.response)
+            		const response = err.response
+
+            		if(response.status === 422){
+            			const data = response.data
+            			this.errors = data.errors
             		}
             	})
         },

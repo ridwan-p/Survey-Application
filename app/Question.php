@@ -10,6 +10,8 @@ class Question extends Model
     	'title', 'survey_id', 'type', 'option'
     ];
 
+    public static $type = ["textarea", 'text', 'radio', 'checkbox'];
+
     public function survey()
     {
     	return $this->belongsTo(Survey::class);
